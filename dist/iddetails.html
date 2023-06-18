@@ -1,0 +1,119 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="id.css">
+  <title>API Data</title>
+</head>
+<body>
+  <ul id="idList"></ul>
+
+  <script>
+    // The API URL to fetch the data
+    const apiUrl = 'http://192.168.1.248:8080/api/vehicle';
+
+    // Fetch the data from the API
+    fetch(apiUrl, { method: 'GET' })
+      .then(response => response.json())
+      .then(data => {
+        const idList = document.getElementById('idList');
+
+        // Loop through the data and create list items for _id
+        // data = [{_id:1,name:sss},{_id:2,name:sss},{_id:3,name:sss},{_id:4,name:sss}]
+        
+        data.forEach(item => {
+          const listItem = document.createElement('li');
+          listItem.className = "xxx";
+
+
+
+          listItem.textContent = item._id;
+          idList.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error('Error retrieving data:', error);
+      });
+  </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Data</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid black;
+    }
+    td{
+      color: brown;
+    }
+    th{
+      color: cadetblue;
+    }
+  </style>
+</head>
+<body>
+  <table id="dataTable">
+    <thead>
+      <tr>
+        <th>RFID</th>
+        <th>NAME</th>
+        <th>SPEED</th>
+        <th>V</th>
+        <th>SAVINGS</th>
+        
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    // The API URL to fetch the data
+    const apiUrl = 'http://192.168.1.248:8080/api/vehicle';
+
+    // Fetch the data from the API
+    fetch(apiUrl, { method: 'GET' })
+      .then(response => response.json())
+      .then(data => {
+        const dataTable = document.getElementById('dataTable');
+        const tbody = dataTable.getElementsByTagName('tbody')[0];
+
+        // Loop through the data and create table rows for each item
+        data.forEach(item => {
+          const row = document.createElement('tr');
+
+          const idCell = document.createElement('td');
+          idCell.textContent = item._id;
+          row.appendChild(idCell);
+
+          const nameCell = document.createElement('td');
+          nameCell.textContent = item.name;
+          row.appendChild(nameCell);
+
+          const speedCell = document.createElement('td');
+          speedCell.textContent = item.speed;
+          row.appendChild(speedCell);
+
+          const __vCell = document.createElement('td');
+          __vCell.textContent = item.__v;
+          row.appendChild(__vCell);
+          
+          const savingCell = document.createElement('td');
+          savingCell.textContent = item.saving;
+          row.appendChild(savingCell);
+          // Add more table cells for each field
+
+          tbody.appendChild(row);
+        });
+      })
+      .catch(error => {
+        console.error('Error retrieving data:', error);
+      });
+  </script>
+</body>
+</html>
