@@ -1,5 +1,1 @@
-# Dashboard
-
-A Pen created on CodePen.io. Original URL: [https://codepen.io/themustafaomar/pen/jLMPKm](https://codepen.io/themustafaomar/pen/jLMPKm).
-
-Simple dashboard UI for inspiration.
+This dashboard design was used to create dashboard of our website. Final integration is yet to be done.
